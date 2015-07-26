@@ -2,7 +2,7 @@
 <p>
   The time is now: <%= Time.now %>
 </p>
-<%= form_tag({action: :upload}, multipart: true) do %>
+<%= form_tag({action: :create}, multipart: true) do %>
     <%= file_field_tag 'picture' %>
     <%= submit_tag("Upload") %>
 <% end %>

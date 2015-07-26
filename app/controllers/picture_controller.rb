@@ -8,7 +8,7 @@ class PictureController < ApplicationController
 
   def create
     uploaded_io = params[:picture]
-    dir = Rails.root.join('public', 'uploads')
+    dir = File.join 'public', 'uploads'
     Dir.mkdir(dir) unless Dir.exists?(dir)
     uid = SecureRandom.urlsafe_base64
     filename = File.join dir, "#{uid}#{File.extname uploaded_io.original_filename}"
@@ -24,12 +24,18 @@ class PictureController < ApplicationController
     @picture = Picture.find_by_uid(params[:id])
   end
 
+  def get_filename_by_uid(uid)
+    picture = Picture.find_by_uid(uid)
+    File.join 'public', 'uploads', "#{picture.uid}#{File.extname(picture.original_filename)}"
+  end
+
   def raw
-    @picture = Picture.find_by_uid(params[:id])
-    dir = Rails.root.join('public', 'uploads')
-    filename = File.join dir, "#{@picture.uid}#{File.extname(@picture.original_filename)}"
-    image_data = File.read filename
-    send_data image_data
+    send_data File.read(get_filename_by_uid params[:id])
+  end
+
+  def delete
+    File.delete(get_filename_by_uid params[:id])
+    Picture.find_by_uid(params[:id]).destroy
   end
 
 end

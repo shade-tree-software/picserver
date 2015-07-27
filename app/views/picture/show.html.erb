@@ -1,4 +1,4 @@
-<%= raw "<img id=\"pic\" alt=\"This picture has expired.  Please ask the owner to provide you with a new link.\"src=\"/picture/#{@picture.uid}/raw\">" %>
+<%= raw "<img id=\"pic\" alt=\"This picture has expired\"src=\"/picture/#{@picture.uid}/raw\">" %>
 
 <script>
     if (<%= @picture.viewable ? 1 : 0 %>) {
@@ -7,6 +7,6 @@
         }, false);
         setTimeout(function () {
             location.reload();
-        }, 20000);
+        }, 30000);
     }
 </script>

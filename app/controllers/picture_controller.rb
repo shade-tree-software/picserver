@@ -8,7 +8,8 @@ class PictureController < ApplicationController
   def create
     @pic = Picture.create(original_filename: params[:picture].original_filename,
                           uid: SecureRandom.urlsafe_base64,
-                          data: params[:picture].read)
+                          data: params[:picture].read,
+                          viewable: true)
   end
 
   def show

@@ -1,1 +1,7 @@
-<%= raw "<img src=\"/picture/#{@picture.uid}/raw\">" %>
+<%= raw "<img id=\"pic\" src=\"/picture/#{@picture.uid}/raw\">" %>
+
+<script>
+    document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+    }, false);
+</script>

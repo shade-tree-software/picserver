@@ -12,11 +12,18 @@ class PictureController < ApplicationController
   end
 
   def show
-    @picture = Picture.find_by_uid(params[:id])
+    @picture = Picture.find_by_uid params[:id]
   end
 
   def raw
-    send_data Picture.find_by_uid(params[:id]).data
+    pic = Picture.find_by_uid params[:id]
+    if pic && pic.viewable
+      pic.viewable = false
+      pic.save
+      send_data pic.data
+    else
+      nil
+    end
   end
 
   def delete

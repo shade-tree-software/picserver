@@ -1,7 +1,12 @@
-<%= raw "<img id=\"pic\" src=\"/picture/#{@picture.uid}/raw\">" %>
+<%= raw "<img id=\"pic\" alt=\"This picture has expired.  Please ask the owner to provide you with a new link.\"src=\"/picture/#{@picture.uid}/raw\">" %>
 
 <script>
-    document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-    }, false);
+    if (<%= @picture.viewable ? 1 : 0 %>) {
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        }, false);
+        setTimeout(function () {
+            location.reload();
+        }, 20000);
+    }
 </script>

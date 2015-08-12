@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     member do
       get 'raw'
       get 'delete'
+      get 'viewable'
     end
   end
 

@@ -31,4 +31,8 @@ class PictureController < ApplicationController
     Picture.find_by_uid(params[:id]).destroy
   end
 
+  def viewable
+    @picture = Picture.find_by_uid params[:id]
+  end
+
 end

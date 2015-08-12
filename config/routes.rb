@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-  root 'welcome#index'
-
-  match ':controller/:action', via: [:get, :post]
+  resources :picture do
+    member do
+      get 'raw'
+      get 'delete'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

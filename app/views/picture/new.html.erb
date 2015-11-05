@@ -3,6 +3,6 @@
   The time is now: <%= Time.now %>
 </p>
 <%= form_tag({action: :create}, multipart: true) do %>
-    <%= file_field_tag 'picture', accept: 'image/gif,image/jpeg' %>
+    <%= file_field_tag 'picture', accept: 'image/gif,image/jpeg,image/png' %>
     <%= submit_tag("Upload") %>
 <% end %>

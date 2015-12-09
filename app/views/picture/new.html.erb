@@ -3,6 +3,12 @@
   The time is now: <%= Time.now %>
 </p>
 <%= form_tag({action: :create}, multipart: true) do %>
+    <%= label_tag :expire %>
+    <%= check_box_tag :expire, nil, true %><br>
+    <%= label_tag :account %>
+    <%= text_field_tag :account %><br>
+    <%= label_tag :notes %>
+    <%= text_field_tag :notes %><br>
     <%= file_field_tag 'picture', accept: 'image/gif,image/jpeg,image/png' %>
     <%= submit_tag("Upload") %>
 <% end %>

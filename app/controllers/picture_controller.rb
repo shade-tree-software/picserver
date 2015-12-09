@@ -10,7 +10,10 @@ class PictureController < ApplicationController
                           uid: SecureRandom.urlsafe_base64,
                           data: params[:picture].read,
                           viewable: true,
-                          content_type: params[:picture].content_type)
+                          content_type: params[:picture].content_type,
+                          account: params[:account],
+                          notes: params[:notes],
+                          expiry: (params[:expire] ? nil : Time.now + 1.year))
   end
 
   def show

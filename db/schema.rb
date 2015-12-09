@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123161829) do
+ActiveRecord::Schema.define(version: 20151209202629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20151123161829) do
     t.integer  "expiry"
     t.string   "notes"
     t.string   "account"
+    t.string   "content_type"
   end
 
 end
